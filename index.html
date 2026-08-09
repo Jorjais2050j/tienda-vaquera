@@ -39,6 +39,13 @@
     html { scroll-behavior: auto; }
     .reveal, .reveal-img { transition: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
   }
+
+  /* Phones: show a compact 2x2 grid (4 images) instead of one full-width
+     card per row, matching "El estilo no sigue tendencias" on "Lo esencial
+     del vaquero" so neither section turns into a tall single-column scroll. */
+  @media (max-width: 640px) {
+    .grid-4-mobile { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+  }
 </style>
 </helmet>
 
@@ -161,7 +168,7 @@
       <h2 style="margin: 0; font-family: 'Rye', serif; font-weight: 400; font-size: clamp(22px, 3.2vw, 34px); letter-spacing: 0.03em; text-transform: uppercase; color: #2A1D13">Lo esencial del vaquero</h2>
       <span style="height: 1px; width: clamp(40px, 10vw, 120px); background: linear-gradient(270deg, transparent, #A9702F)"></span>
     </div>
-    <div style="position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: 22px">
+    <div class="grid-4-mobile" style="position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: 22px">
       <a href="#coleccion" class="reveal" style="display: block; color: inherit">
         <div style="position: relative; aspect-ratio: 3/4; border: 1px solid rgba(42,29,19,0.2); background: #DED2BC">
           <image-slot id="rn-cat-1" shape="rect" placeholder="Botas artesanales" fit="contain" src="mis-imagenes/categoria-botas.jpg"></image-slot>
@@ -240,7 +247,7 @@
   <section style="position: relative; padding: clamp(56px, 7vw, 84px) 0 clamp(48px, 6vw, 76px); background: #EDE4D3; color: #241A12">
     <div style="position: absolute; inset: 0; background-image: var(--grain); opacity: 0.05; pointer-events: none"></div>
     <h2 class="reveal" style="position: relative; margin: 0 clamp(20px, 5vw, 72px) 44px; font-family: 'Rye', serif; font-weight: 400; font-size: clamp(20px, 2.8vw, 30px); letter-spacing: 0.03em; text-transform: uppercase; text-align: center; color: #2A1D13">El estilo no sigue tendencias, las trasciende</h2>
-    <div style="position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: 8px; padding: 0 8px">
+    <div class="grid-4-mobile" style="position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: 8px; padding: 0 8px">
       <div class="reveal-img" style="position: relative; aspect-ratio: 4/5; background: #DED2BC"><image-slot id="rn-gal-1" shape="rect" placeholder="Jinete de espaldas" fit="contain" src="mis-imagenes/galeria-1.jpg"></image-slot></div>
       <div class="reveal-img" style="position: relative; aspect-ratio: 4/5; background: #DED2BC; transition-delay: .08s"><image-slot id="rn-gal-2" shape="rect" placeholder="Cuero repujado" fit="contain" src="mis-imagenes/galeria-2.jpg"></image-slot></div>
       <div class="reveal-img" style="position: relative; aspect-ratio: 4/5; background: #DED2BC; transition-delay: .16s"><image-slot id="rn-gal-3" shape="rect" placeholder="Retrato con sombrero" fit="contain" src="mis-imagenes/galeria-3.jpg"></image-slot></div>
