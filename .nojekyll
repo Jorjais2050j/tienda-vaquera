@@ -1,0 +1,5 @@
+git checkout main
+touch .nojekyll
+git add .nojekyll
+git commit -m "Add .nojekyll para que GitHub Pages sirva la carpeta _ds"
+git push origin main
