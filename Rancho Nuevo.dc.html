@@ -410,5 +410,20 @@ class Component extends DCLogic {
   new MutationObserver(reveal).observe(document.body, { childList: true, subtree: true });
 })();
 </script>
+<script>
+// Safety net for the 2-column mobile grid ("Lo esencial del vaquero" /
+// "El estilo no sigue tendencias"). The dc-runtime occasionally
+// re-renders the <helmet> stylesheet in a way that transiently drops the
+// grid-4-mobile override, which collapses the grid to a single column and
+// makes one photo balloon to fill the whole screen mid-scroll until the
+// runtime repaints. Injecting this rule AFTER load, as its own stylesheet
+// outside dc-runtime's control, keeps a safe 2+ column layout no matter
+// what the runtime's own stylesheet is doing at any given moment.
+window.addEventListener('load', function () {
+  var s = document.createElement('style');
+  s.textContent = '@media (max-width: 640px) { .grid-4-mobile { grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr)) !important; } }';
+  document.head.appendChild(s);
+});
+</script>
 </body>
 </html>
